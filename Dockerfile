@@ -19,7 +19,7 @@ ARG OSX_CROSS_COMMIT=bee9df60f169abdbe88d8529dbcc1ec57acf656d
 ARG OSX_CROSS_REQUIREMENTS="libssl-dev libxml2-dev zlib1g-dev"
 
 # Preparing base part of target image
-FROM golang:${GO_VERSION}-${GO_IMAGE} AS base
+FROM golang:${GO_IMAGE} AS base
 ARG APT_MIRROR
 RUN sed -ri "s/(httpredir|deb).debian.org/${APT_MIRROR:-deb.debian.org}/g" /etc/apt/sources.list \
  && sed -ri "s/(security).debian.org/${APT_MIRROR:-security.debian.org}/g" /etc/apt/sources.list
