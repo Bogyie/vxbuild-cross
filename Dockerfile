@@ -1,6 +1,5 @@
 # Golang docker image options
-ARG GO_IMAGE=buster
-ARG GO_VERSION=1.20.5
+ARG GO_IMAGE=1.21.0-bullseye
 
 # Libtool arguments
 ARG LIBTOOL_VERSION=2.4.6_3
@@ -20,7 +19,7 @@ ARG OSX_CROSS_COMMIT=bee9df60f169abdbe88d8529dbcc1ec57acf656d
 ARG OSX_CROSS_REQUIREMENTS="libssl-dev libxml2-dev zlib1g-dev"
 
 # Preparing base part of target image
-FROM golang:${GO_VERSION}-${GO_IMAGE} AS base
+FROM golang:${GO_IMAGE} AS base
 ARG APT_MIRROR
 RUN sed -ri "s/(httpredir|deb).debian.org/${APT_MIRROR:-deb.debian.org}/g" /etc/apt/sources.list \
  && sed -ri "s/(security).debian.org/${APT_MIRROR:-security.debian.org}/g" /etc/apt/sources.list
